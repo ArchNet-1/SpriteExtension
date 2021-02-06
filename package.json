@@ -1,0 +1,24 @@
+{
+  "name": "com.archnet.extension.sprite",
+  "version": "1.0.0",
+  "displayName": "Arch Net Extension Sprite",
+  "description": "Extension to get Sprite from a Image Library, analyse from EnumLibrary and use Enum Extension",
+  "unity": "2020.1",
+  "unityRelease": "0b5",
+  "keywords": [
+    "Arch",
+    "ArchNet",
+    "Extension",
+    "Sprite",
+    "Custom"
+  ],
+  "author": {
+    "name": "Arch Net",
+    "email": "archnetmodule@gmail.com"
+  }
+  ,
+  "dependencies": {
+  "com.archnet.library.enum": "1.0.0",
+  "com.archnet.library.image": "1.0.0"
+  }
+}
