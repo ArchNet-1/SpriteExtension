@@ -1,9 +1,8 @@
-﻿using System;
+﻿using ArchNet.Library.Enum;
+using ArchNet.Library.Image;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-using ArchNet.Library.Image;
-using ArchNet.Extension.Enum;
-using ArchNet.Library.Enum;
 
 namespace ArchNet.Extension.Sprite
 {
@@ -15,6 +14,7 @@ namespace ArchNet.Extension.Sprite
     public class SpriteExtension : MonoBehaviour
     {
         #region Publics Fields
+
         public enum keyType
         {
             ENUM,
@@ -48,11 +48,16 @@ namespace ArchNet.Extension.Sprite
             {
                 Type lEnumType = _enumLibrary.GetEnum(_imageLibrary);
 
-                lIndex = EnumExtension.GetEnumValue(lEnumType, _enumChoice);
+                lIndex = _enumLibrary.GetEnumValue(lEnumType, _enumChoice);
             }
             else
             {
                 lIndex = _enumIndex;
+            }
+
+            while (null == _imageLibrary.GetSprite(lIndex))
+            {
+                lIndex--;
             }
 
             _sprite = _imageLibrary.GetSprite(lIndex);

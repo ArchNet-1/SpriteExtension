@@ -1,4 +1,3 @@
-using ArchNet.Extension.Enum;
 using ArchNet.Library.Enum;
 using ArchNet.Library.Image;
 using System.Collections.Generic;
@@ -28,7 +27,7 @@ namespace ArchNet.Extension.Sprite.Editor
         private SerializedProperty _keyType = null;
         private SerializedProperty _enumIndex = null;
         private SerializedProperty _enumChoice = null;
-        private SerializedProperty _sprite = null;
+
         #endregion
 
         #region Unity Methods
@@ -64,7 +63,6 @@ namespace ArchNet.Extension.Sprite.Editor
             _keyType = serializedObject.FindProperty("_keyType");
             _enumIndex = serializedObject.FindProperty("_enumIndex");
             _enumChoice = serializedObject.FindProperty("_enumChoice");
-            _sprite = serializedObject.FindProperty("_sprite");
 
             EditorGUILayout.Space(10);
 
@@ -139,7 +137,16 @@ namespace ArchNet.Extension.Sprite.Editor
                 EditorGUILayout.LabelField("Int Value");
                 EditorGUILayout.Space(5);
 
-                _enumIndex.intValue = EditorGUILayout.IntField(_manager._enumIndex);             
+                _enumIndex.intValue = EditorGUILayout.IntField(_manager._enumIndex);
+
+                _manager._enumIndex = _enumIndex.intValue;
+
+                if (_enumIndex.intValue > _manager._imageLibrary.GetMaxValue())
+                {
+                    _enumIndex.intValue = _manager._imageLibrary.GetMaxValue();
+                }
+
+                _manager.LoadSprite();
             }
             else if (_manager._keyType == keyType.ENUM)
             {
@@ -148,29 +155,30 @@ namespace ArchNet.Extension.Sprite.Editor
 
                 _enumChoice.stringValue = _manager.GetEnumName();
 
-                if (_enumChoice.stringValue == "")
+                if (_enumChoice.stringValue != "")
                 {
-                    return;
+                    _enumChoices = _manager._enumLibrary.GetEnumKeys(_enumChoice.stringValue);
+
+                    _enumIndex.intValue = EditorGUILayout.Popup(_manager._enumIndex, _enumChoices.ToArray());
+
+                    _manager._enumIndex = _enumIndex.intValue;
+
+                    // Set enum string value
+                    _manager._enumChoice = _enumChoices[_enumIndex.intValue];
+
+
+                    _manager.LoadSprite();
                 }
-
-                _enumChoices = EnumExtension.GetEnumKeys(_enumChoice.stringValue);
-
-                _enumIndex.intValue = EditorGUILayout.Popup(_manager._enumIndex, _enumChoices.ToArray());
-            }
-
-            _manager._enumIndex = _enumIndex.intValue;
-
-            if (_manager._keyType == keyType.ENUM)
-            {
-                // Set enum string value
-                _manager._enumChoice = _enumChoices[_enumIndex.intValue];
+                else
+                {
+                    EditorGUILayout.LabelField("Image Library doesnt have an enum");
+                }
             }
 
             EditorGUILayout.EndVertical();
 
             EditorGUILayout.Space(5);
 
-            _manager.LoadSprite();
         }
 
 

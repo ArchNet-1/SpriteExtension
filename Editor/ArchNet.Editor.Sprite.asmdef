@@ -1,9 +1,9 @@
 {
     "name": "ArchNet.Editor.Sprite",
-    "rootNamespace": "",
     "references": [
         "GUID:2f46af9cb3482c847bf821ddf2178557",
         "GUID:e2c748859bda1c94cb85848a75f1711a",
+        "GUID:4957c55d64637164ca0cc7e63907def0",
         "GUID:5bcffe0bff3b2cf4592794c5b1976cfa"
     ],
     "includePlatforms": [],
