@@ -58,6 +58,12 @@ namespace ArchNet.Extension.Sprite
             while (null == _imageLibrary.GetSprite(lIndex))
             {
                 lIndex--;
+
+                if (lIndex < 0)
+                {
+                    lIndex = 0;
+                    break;
+                }
             }
 
             _sprite = _imageLibrary.GetSprite(lIndex);
