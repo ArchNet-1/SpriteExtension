@@ -42,31 +42,7 @@ namespace ArchNet.Extension.Sprite
         /// </summary>
         public void LoadSprite()
         {
-            int lIndex;
-
-            if (_keyType == keyType.ENUM && _enumChoice != "")
-            {
-                Type lEnumType = _enumLibrary.GetEnum(_imageLibrary);
-
-                lIndex = _enumLibrary.GetEnumValue(lEnumType, _enumChoice);
-            }
-            else
-            {
-                lIndex = _enumIndex;
-            }
-
-            while (null == _imageLibrary.GetSprite(lIndex))
-            {
-                lIndex--;
-
-                if (lIndex < 0)
-                {
-                    lIndex = 0;
-                    break;
-                }
-            }
-
-            _sprite = _imageLibrary.GetSprite(lIndex);
+            _sprite = _imageLibrary.GetSprite(_enumIndex);
         }
 
         public Type GetEnum()
@@ -76,7 +52,7 @@ namespace ArchNet.Extension.Sprite
 
         public string GetEnumName()
         {
-            return _enumLibrary.GetEnumName(_imageLibrary);
+            return _enumLibrary.GetEnumName(_enumIndex);
         }
 
 

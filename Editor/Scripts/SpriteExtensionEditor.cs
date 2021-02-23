@@ -49,7 +49,7 @@ namespace ArchNet.Extension.Sprite.Editor
             _warningInfos = null;
         }
 
-      
+
 
         public override void OnInspectorGUI()
         {
@@ -71,11 +71,23 @@ namespace ArchNet.Extension.Sprite.Editor
             // Sprite Data is set
             if (true == IsConditionsOK())
             {
-                EditorGUILayout.BeginHorizontal();
+                EnumLibrary lEnumLibrary = (EnumLibrary)_enumLibrary.objectReferenceValue;
+                ImageLibrary lImageLibrary = (ImageLibrary)_imageLibrary.objectReferenceValue;
 
-                DisplayEnum();
+                if (true == lEnumLibrary.IsExist(lImageLibrary))
+                {
+                    EditorGUILayout.BeginHorizontal();
 
-                EditorGUILayout.EndHorizontal();
+                    DisplayEnum();
+
+                    EditorGUILayout.EndHorizontal();
+                }
+                else
+                {
+                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField("This library is not in the enum library, please verify your data", _warningInfos);
+                    EditorGUILayout.EndHorizontal();
+                }
             }
 
             EditorGUILayout.Space(10);
@@ -141,11 +153,6 @@ namespace ArchNet.Extension.Sprite.Editor
 
                 _manager._enumIndex = _enumIndex.intValue;
 
-                if (_enumIndex.intValue > _manager._imageLibrary.GetMaxValue())
-                {
-                    _enumIndex.intValue = _manager._imageLibrary.GetMaxValue();
-                }
-
                 _manager.LoadSprite();
             }
             else if (_manager._keyType == keyType.ENUM)
@@ -189,7 +196,7 @@ namespace ArchNet.Extension.Sprite.Editor
         /// <returns></returns>
         private bool IsConditionsOK()
         {
-            if (_imageLibrary == null ||( _enumLibrary == null && _manager._keyType == keyType.ENUM))
+            if (_imageLibrary == null || (_enumLibrary == null && _manager._keyType == keyType.ENUM))
             {
                 return false;
             }
@@ -199,7 +206,7 @@ namespace ArchNet.Extension.Sprite.Editor
                 return false;
             }
 
-            if (_manager._imageLibrary == null || ( _manager._enumLibrary == null && _manager._keyType == keyType.ENUM))
+            if (_manager._imageLibrary == null || (_manager._enumLibrary == null && _manager._keyType == keyType.ENUM))
             {
                 return false;
             }
