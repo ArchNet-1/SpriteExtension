@@ -23,4 +23,4 @@ Add **ArchNet > Library Sprite**, pick the Image Library and the sprite. From co
 
 ## License
 
-See [LICENSE.md](LICENSE.md).
+MIT, see [LICENSE.md](LICENSE.md).

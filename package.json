@@ -4,6 +4,7 @@
   "displayName": "ArchNet - Sprite Extension",
   "description": "Shows a sprite from an Image Library key on a UI Image or a SpriteRenderer, so icons are picked by name.",
   "unity": "6000.0",
+  "license": "MIT",
   "documentationUrl": "https://archnet-plateform.fr/#SpriteExtension",
   "changelogUrl": "https://github.com/ArchNet-1/SpriteExtension/blob/master/CHANGELOG.md",
   "licensesUrl": "https://github.com/ArchNet-1/SpriteExtension/blob/master/LICENSE.md",
