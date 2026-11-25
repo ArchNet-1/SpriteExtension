@@ -1,24 +1,24 @@
 {
   "name": "com.archnet.extension.sprite",
-  "version": "1.0.0",
-  "displayName": "Arch Net Extension Sprite",
-  "description": "Extension to get Sprite from a Image Library, analyse from EnumLibrary and use Enum Extension",
-  "unity": "2020.1",
-  "unityRelease": "0b5",
+  "version": "2.0.0",
+  "displayName": "ArchNet - Sprite Extension",
+  "description": "Shows a sprite from an Image Library key on a UI Image or a SpriteRenderer, so icons are picked by name.",
+  "unity": "6000.0",
+  "documentationUrl": "https://archnet-plateform.fr/#SpriteExtension",
+  "changelogUrl": "https://github.com/ArchNet-1/SpriteExtension/blob/master/CHANGELOG.md",
+  "licensesUrl": "https://github.com/ArchNet-1/SpriteExtension/blob/master/LICENSE.md",
+  "dependencies": {
+    "com.archnet.library.image": "2.0.0",
+    "com.archnet.library.core": "2.0.0"
+  },
   "keywords": [
-    "Arch",
-    "ArchNet",
-    "Extension",
-    "Sprite",
-    "Custom"
+    "archnet",
+    "extension",
+    "sprite"
   ],
   "author": {
-    "name": "Arch Net",
-    "email": "archnetmodule@gmail.com"
-  }
-  ,
-  "dependencies": {
-  "com.archnet.library.enum": "1.0.0",
-  "com.archnet.library.image": "1.0.0"
+    "name": "ArchNet",
+    "email": "archnetmodule@gmail.com",
+    "url": "https://archnet-plateform.fr"
   }
 }
